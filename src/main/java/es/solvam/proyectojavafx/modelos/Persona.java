@@ -16,6 +16,23 @@ public class Persona {
 
     private String imagen;
 
+    public Persona(){}
+
+    public Persona(String linea) {
+        String[] elementos = linea.split(";");
+        this.dni = elementos[0];
+        this.nombre = elementos[1];
+        this.telefono = elementos[2];
+        this.sexo = elementos[3].equals("true");
+        this.fechaNacimiento = LocalDate.parse(elementos[4]);
+        this.ocupacion = elementos[5];
+        this.tecnologia = elementos[6].equals("true");
+        this.diseno = elementos[7].equals("true");
+        this.consultoria = elementos[8].equals("true");
+        this.formacion = elementos[9].equals("true");
+        this.imagen = elementos[10];
+    }
+
     public String getImagen() {
         return imagen;
     }
@@ -102,5 +119,9 @@ public class Persona {
 
     public void setFormacion(boolean formacion) {
         this.formacion = formacion;
+    }
+
+    public String modelo2Fichero(){
+        return dni+";"+nombre+";"+telefono+";"+sexo+";"+fechaNacimiento.toString()+";"+ocupacion+";"+tecnologia+";"+diseno+";"+consultoria+";"+formacion+";"+imagen;
     }
 }
